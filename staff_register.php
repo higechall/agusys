@@ -2,6 +2,7 @@
 session_start();
 include("functions.php");
 check_session_id();
+check_admin_id();
 ?>
 
 <!DOCTYPE html>
