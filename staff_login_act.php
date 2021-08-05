@@ -29,7 +29,7 @@ if ($status == false) {
 		$_SESSION["session_id"] = session_id();
 		$_SESSION["is_admin"] = $val["is_admin"];
 		$_SESSION["staffname"] = $val["staffname"];
-		header("Location:404.html");
+		header("Location:damagelist_read.php");
 		exit();
 	}
 }

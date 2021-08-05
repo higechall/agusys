@@ -68,6 +68,17 @@ div.inputbox:hover {
 	border-width: .4rem;
 }
 
+/* 申請情報入力欄 */
+div.inputboxIv {
+	width: 50rem;
+	height: 2rem;
+	margin: 1rem auto 0;
+	padding: .3rem 1rem;
+	border-bottom: solid rgba(34, 102, 30, 0.5);
+	border-width: .4rem;
+}
+
+
 /* ボタン位置調整 */
 div.loginbtnwrap {
 	max-width: 300px;
