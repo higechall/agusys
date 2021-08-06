@@ -1,6 +1,6 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('error_reporting', E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('error_reporting', E_ALL);
 include('functions.php');
 
 // ファイル関連の取得
@@ -21,10 +21,12 @@ $caption = filter_input(INPUT_POST, 'caption', FILTER_SANITIZE_SPECIAL_CHARS);
 // 未入力
 if (empty($caption)) {
 	array_push($err_msgs, 'キャプションを入力してください。');
+	header('Location:indiv_photo_upload_error.php');
 }
 // 140文字か
 if (strlen($caption) > 140) {
 	array_push($err_msgs, 'キャプションは140文字以内で入力してください。');
+	header('Location:indiv_photo_upload_error.php');
 }
 // ファイルのバリデーション
 // ファイルサイズが1MB未満か
@@ -32,6 +34,7 @@ if (strlen($caption) > 140) {
 // エラーの値参照 https://www.php.net/manual/ja/features.file-upload.errors.php
 if ($filesize > 3145728 || $file_err == 2) {
 	array_push($err_msgs, 'ファイルサイズは3MB未満にしてください。');
+	header('Location:indiv_photo_upload_error.php');
 }
 
 // 拡張は画像形式か
@@ -40,6 +43,7 @@ $file_ext = pathinfo($filename, PATHINFO_EXTENSION);
 
 if (!in_array(strtolower($file_ext), $allow_ext)) {
 	array_push($err_msgs, '画像ファイルを添付してください。');
+	header('Location:indiv_photo_upload_error.php');
 }
 
 if (count($err_msgs) === 0) {
@@ -54,49 +58,21 @@ if (count($err_msgs) === 0) {
 
 			if ($result) {
 				echo 'データベースに保存しました！';
-				header('Location:photo_send.html');
+				header('Location:indiv_photo_success.php');
 			} else {
 				echo 'データベースへの保存に失敗しました...';
+				header('Location:indiv_photo_upload_error.php');
 			}
 		} else {
 			echo 'ファイルが保存できませんでした。';
+			header('Location:indiv_photo_upload_error.php');
 		}
 	} else {
 		echo 'ファイルが選択されていません。';
+		header('Location:indiv_photo_upload_error.php');
 	}
 } else {
 	foreach ($err_msgs as $msg) {
 		echo $msg;
 	}
 }
-
-?>
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>職員画面:写真アップロードエラー</title>
-	<link rel="stylesheet" href="staffpage.css">
-</head>
-
-<body>
-	<form>
-		<fieldset class="loginfield">
-			<div class="logo">
-				<img src="logo/agusyslogo_rcL.png" alt="logo" title="logo">
-			</div>
-			<p class="errormsg">
-				<?= $err_msgs ?>
-			</p>
-			<div class="returnbtnwrap">
-				<a href="indiv_photo_form.php">写真登録に戻る</a>
-			</div>
-		</fieldset>
-	</form>
-
-</body>
-
-</html>

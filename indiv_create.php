@@ -21,7 +21,8 @@ if (
 	!isset($_POST['amounts']) || $_POST['amounts'] == '' ||
 	!isset($_POST['memo']) || $_POST['memo'] == ''
 ) {
-	exit('ParamError...');
+	// exit('ParamError...');
+	header('Location:indiv_create_error.php');
 }
 
 // データを変数に格納
@@ -89,9 +90,10 @@ $status = $stmt->execute(); // SQLを実行
 
 if ($status == false) {
 	// 失敗の場合
-	$error = $stmt->errorInfo();
-	exit('sqlError:' . $error[2]);
+	// $error = $stmt->errorInfo();
+	// exit('sqlError:' . $error[2]);
+	header('Location:indiv_create_error.php');
 } else {
 	// 成功の場合
-	header('Location:shinsei_send.html');
+	header('Location:indiv_success.php');
 }

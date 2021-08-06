@@ -39,10 +39,14 @@ $files = getAllFile();
 	<div class="applreadmain">
 		<p class="msg">&emsp;ログインID: <?= $_SESSION['staffname'] ?>
 			&emsp;&emsp;
-			<a href="admin_login.php" class="linkstyle">管理者ログイン画面</a> /
-			<a href="staff_register.php" class="linkstyle">アカウント登録画面</a> /
-			<a href="damagelist_read.php" class="linkstyle">申請一覧画面</a> /
-			<a href="admin_logout.php" class="linkstyle">ログアウト</a>
+			<a href="admin_logout.php" class="linkstyle">ログアウト</a> /
+			<!-- <a href="admin_login.php" class="linkstyle">管理者ログイン</a> / -->
+			<!-- <a href="staff_register.php" class="linkstyle">アカウント登録</a> /  -->
+			<a href="damagelist_read.php" class="linkstyle">申請一覧</a> /
+			<!-- <a href="damagephoto_read.php" class="linkstyle">写真一覧</a> / -->
+			<a href="indiv_input.php" class="linkstyle">申請登録</a> /
+			<a href="indiv_photo_form.php" class="linkstyle">写真登録</a> /
+			<a href="damagemap.php" class="linkstyle">地図表示</a>
 		</p>
 		<p class="adminpagetitle">写真一覧</p>
 		<div class="appllistwrap">
