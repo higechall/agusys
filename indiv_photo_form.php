@@ -13,23 +13,38 @@ check_session_id();
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>職員画面:写真登録</title>
 	<link rel="stylesheet" href="staffpage.css">
+	<style>
+		/* 写真登録 */
+		div.imgarea {
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+
+		/* 写真表示サイズ */
+		img {
+			max-width: 290px;
+			max-height: 290px;
+		}
+	</style>
 </head>
 
 <body>
 	<div class="applreadmain">
 		<p class="msg">&emsp;ログインID: <?= $_SESSION['staffname'] ?>
 			&emsp;&emsp;
-			<a href="admin_login.php" class="linkstyle">管理者ログイン画面</a> /
-			<a href="staff_register.php" class="linkstyle">アカウント登録画面</a> /
-			<a href="damagelist_read.php" class="linkstyle">申請一覧画面</a> /
-			<a href="damagephoto_read.php" class="linkstyle">写真一覧画面</a> /
-			<a href="indiv_input.php" class="linkstyle">申請入力画面</a> /
-			<a href="admin_logout.php" class="linkstyle">ログアウト</a>
+			<a href="admin_logout.php" class="linkstyle">ログアウト</a> /
+			<!-- <a href="admin_login.php" class="linkstyle">管理者ログイン</a> / -->
+			<!-- <a href="staff_register.php" class="linkstyle">アカウント登録</a> /  -->
+			<a href="damagelist_read.php" class="linkstyle">申請一覧</a> /
+			<a href="damagephoto_read.php" class="linkstyle">写真一覧</a> /
+			<a href="indiv_input.php" class="linkstyle">申請登録</a> /
+			<!-- <a href="indiv_photo_form.php" class="linkstyle">写真登録</a> / -->
+			<a href="damagemap.php" class="linkstyle">地図表示</a>
 		</p>
 		<p class="adminpagetitle">写真登録</p>
 		<div class="appllistwrap">　
 			<div class="appllistinnerwrap">
-				<form enctype="multipart/form-data" action="./photo_upload.php" method="POST">
+				<form enctype="multipart/form-data" action="indiv_photo_upload.php" method="POST">
 					<fieldset>
 						<!-- <legend>■ 被害状況がわかる写真</legend> -->
 						<div class="wrapForm">
@@ -38,7 +53,7 @@ check_session_id();
 								<input name="img" type="file" accept="image/*" />
 							</div>
 							<div>
-								<textarea name="caption" placeholder="キャプション： 氏名・ほ場住所など（140文字以下）" id="caption"></textarea>
+								<textarea name="caption" placeholder="メモ： 氏名・ほ場住所など（140文字以下）" id="caption"></textarea>
 							</div>
 							<div class="loginbtnwrap">
 								<button class="loginbtn" type="button" onclick="submit()">トウロク</button>

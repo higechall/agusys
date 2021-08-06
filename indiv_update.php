@@ -52,6 +52,6 @@ if ($status == false) {
 	echo json_encode(["error_msg" => "{$error[2]}"]);
 	exit();
 } else {
-	header("Location:shinsei_graph.php");
+	header("Location:damagelist_read.php");
 	exit();
 }

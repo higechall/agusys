@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("functions.php");
-// check_session_id();
+check_session_id();
 
 $id = $_GET['id'];
 $pdo = connect_to_db();
@@ -44,56 +44,9 @@ if ($status == false) {
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-	<title>職員画面:申請情報の編集</title>
+	<title>職員画面:個別編集</title>
 	<link rel="stylesheet" href="staffpage.css">
 	<style>
-		fieldset.indiv {
-			width: 96%;
-			margin: 2.5em auto;
-			padding: 0;
-			border-color: #22661e;
-			border-width: 0px;
-			border-radius: 15px;
-			background-color: #fff;
-		}
-
-		table.appllist {
-			width: 100%;
-			border-collapse: collapse;
-			border-spacing: 0;
-			font-size: .6em;
-		}
-
-		table.appllist thead th {
-			/* 縦スクロール時に固定する */
-			position: -webkit-sticky;
-			position: sticky;
-			top: 0;
-			/* tbody内のセルより手前に表示する */
-			z-index: 1;
-		}
-
-		table.appllist th,
-		table.appllist td {
-			padding: 5px 0;
-			text-align: center;
-		}
-
-		table.appllist th {
-			background-color: #eee;
-		}
-
-		table.appllist tr:nth-child(even) {
-			background-color: #eee;
-		}
-
-		p {
-			color: #666;
-			font-size: 1.2rem;
-			text-align: center;
-		}
-
 		img {
 			width: 300px;
 			height: auto;
@@ -102,26 +55,23 @@ if ($status == false) {
 </head>
 
 <body>
-	<script>
-		function confirm_del() {
-			var select = confirm("本当に削除しますか？ \n「OK」で削除 \n「キャンセル」で中止");
-			return select;
-		}
-	</script>
-	<form action="shinsei_update.php" method="POST" onsubmit="return false;">
-		<!-- Enterキーでの誤送信を防ぐ(1) onsubmit="return false";でsubmitを中止 -->
-		<fieldset class="indiv">
-			<p class="msg">&emsp;ログインID:
-				<?= $_SESSION['staffname'] ?>
-				&emsp;&emsp;
-				<a href="admin_login.php" class="linkstyle">管理者ログイン画面</a> /
-				<a href="staff_register.php" class="linkstyle">アカウント登録画面</a> /
-				<a href="damagelist_read.php" class="linkstyle">申請一覧画面</a> /
-				<a href="admin_logout.php" class="linkstyle">ログアウト</a>
-			</p>
-			<p class="adminpagetitle">個別データ編集</p>
-			<div class="appllistwrap">
-				<div class="appllistinnerwrap">
+	<div class="applreadmain">
+		<p class="msg">&emsp;ログインID: <?= $_SESSION['staffname'] ?>
+			&emsp;&emsp;
+			<a href="admin_logout.php" class="linkstyle">ログアウト</a> /
+			<!-- <a href="admin_login.php" class="linkstyle">管理者ログイン</a> / -->
+			<!-- <a href="staff_register.php" class="linkstyle">アカウント登録</a> /  -->
+			<a href="damagelist_read.php" class="linkstyle">申請一覧</a> /
+			<a href="damagephoto_read.php" class="linkstyle">写真一覧</a> /
+			<a href="indiv_input.php" class="linkstyle">申請登録</a> /
+			<a href="indiv_photo_form.php" class="linkstyle">写真登録</a> /
+			<a href="damagemap.php" class="linkstyle">地図表示</a>
+		</p>
+		<p class="adminpagetitle">申請情報の編集</p>
+		<div class="appllistwrap">　
+			<div class="appllistinnerwrap">
+				<form action="indiv_update.php" method="POST" onsubmit="return false;">
+					<!-- Enterキーでの誤送信を防ぐ(1) onsubmit="return false";でsubmitを中止 -->
 					<table class="appllist">
 						<thead>
 							<tr>
@@ -206,7 +156,9 @@ if ($status == false) {
 							</tr>
 						</tbody>
 					</table>
-					<button type="button" onclick="submit()"> 更新 </button>
+					<div class="loginbtnwrap">
+						<button class="loginbtn" type="button" onclick="submit()">コウシン</button>
+					</div>
 					<input type="hidden" name="id" value="<?= $record['id'] ?>">
 					<!-- Enterキーでの誤送信を防ぐ(2) type=”submit”だと送信されてしまうのでtype=”button”に変更。
 						onclick=”submit();”でボタンを押した時だけsubmitさせる -->
@@ -224,13 +176,13 @@ if ($status == false) {
 						<?php endforeach; ?>
 					</div>
 
-		</fieldset>
+					</fieldset>
 
-	</form>
-	</main>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
-	</script>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<!-- ふりがなのスクリプト -->
 	<script src="jquery.autoKana.js" type="text/javascript"></script>
 	<!-- 郵便番号のスクリプト -->
@@ -240,7 +192,6 @@ if ($status == false) {
 			$.fn.autoKana('#reqName', '#kana');
 		});
 	</script>
-
 </body>
 
 </html>

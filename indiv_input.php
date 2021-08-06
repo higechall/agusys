@@ -11,7 +11,7 @@ check_session_id();
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>職員画面:申請入力</title>
+	<title>職員画面:申請登録</title>
 	<link rel="stylesheet" href="staffpage.css">
 </head>
 
@@ -19,17 +19,19 @@ check_session_id();
 	<div class="applreadmain">
 		<p class="msg">&emsp;ログインID: <?= $_SESSION['staffname'] ?>
 			&emsp;&emsp;
-			<a href="admin_login.php" class="linkstyle">管理者ログイン画面</a> /
-			<a href="staff_register.php" class="linkstyle">アカウント登録画面</a> /
-			<a href="damagelist_read.php" class="linkstyle">申請一覧画面</a> /
-			<a href="damagephoto_read.php" class="linkstyle">写真一覧画面</a> /
-			<a href="indiv_photo_form.php" class="linkstyle">写真登録画面</a> /
-			<a href="admin_logout.php" class="linkstyle">ログアウト</a>
+			<a href="admin_logout.php" class="linkstyle">ログアウト</a> /
+			<!-- <a href="admin_login.php" class="linkstyle">管理者ログイン</a> / -->
+			<!-- <a href="staff_register.php" class="linkstyle">アカウント登録</a> / -->
+			<a href="damagelist_read.php" class="linkstyle">申請一覧</a> /
+			<a href="damagephoto_read.php" class="linkstyle">写真一覧</a> /
+			<!-- <a href="indiv_input.php" class="linkstyle">申請登録</a> / -->
+			<a href="indiv_photo_form.php" class="linkstyle">写真登録</a> /
+			<a href="damagemap.php" class="linkstyle">地図表示</a>
 		</p>
-		<p class="adminpagetitle">申請入力</p>
+		<p class="adminpagetitle">申請登録</p>
 		<div class="appllistwrap">
 			<div class="appllistinnerwrap">
-				<form action=" indiv_create.php" method="POST" onsubmit="return false;">
+				<form action="indiv_create.php" method="POST" onsubmit="return false;">
 					<!-- Enterキーでの誤送信を防ぐ(1) onsubmit="return false";でsubmitを中止 -->
 					<fieldset>
 						<div class="wrapForm">
@@ -93,7 +95,7 @@ check_session_id();
 								面積: <input type="number" min="0" step="0.01" name="fieldArea">a
 							</div>
 							<div class="inputboxIv">
-								浸水深: <input type="number" min="0" step="0.01" name="fieldArea">a
+								浸水深: <input type="number" min="0" step="0.01" name="levels">cm
 							</div>
 							<div class="inputboxIv">
 								被害項目: <select name="damages">

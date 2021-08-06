@@ -35,12 +35,8 @@ if ($status == false) {
 		$output .= "<td>{$record["damages"]}</td>";
 		$output .= "<td>{$record["amounts"]}</td>";
 		$output .= "<td>{$record["memo"]}</td>";
-
-		// $output .= "<td><a href='cnf_create.php?appldata_id={$appldata_id}&staff_id={$record["id"]}'>like</a></td>";
-		// $output .= "<td><a href='cfm_create.php?damage_id={$damage_id}&staff_id={$record["id"]}'>like{$record["cnt"]}</a></td>";
-
 		$output .= "<td><a href='indiv_edit.php?id={$record["id"]}' class='iconlink'><i class='fas fa-edit'></i></a></td>";
-		$output .= "<td><a href='shinsei_delete.php?id={$record["id"]}' onclick='return confirm_del();' class='iconlink'><i class='fas fa-trash-alt'></i></a></td>";
+		$output .= "<td><a href='indiv_delete.php?id={$record["id"]}' onclick='return confirm_del();' class='iconlink'><i class='fas fa-trash-alt'></i></a></td>";
 		$output .= "</tr>";
 	}
 	unset($value);
@@ -69,11 +65,14 @@ if ($status == false) {
 	<div class="applreadmain">
 		<p class="msg">&emsp;ログインID: <?= $_SESSION['staffname'] ?>
 			&emsp;&emsp;
-			<a href="admin_login.php" class="linkstyle">管理者ログイン画面</a> /
-			<a href="staff_register.php" class="linkstyle">アカウント登録画面</a> /
-			<!-- <a href="shinsei_graph.php" class="linkstyle">申請一覧画面</a> / -->
-			<a href="damagephoto_read.php" class="linkstyle">写真一覧画面</a> /
-			<a href="admin_logout.php" class="linkstyle">ログアウト</a>
+			<a href="admin_logout.php" class="linkstyle">ログアウト</a> /
+			<!-- <a href="admin_login.php" class="linkstyle">管理者ログイン</a> / -->
+			<!-- <a href="staff_register.php" class="linkstyle">アカウント登録</a> /  -->
+			<!-- <a href="damagelist_read.php" class="linkstyle">申請一覧</a> / -->
+			<a href="damagephoto_read.php" class="linkstyle">写真一覧</a> /
+			<a href="indiv_input.php" class="linkstyle">申請登録</a> /
+			<a href="indiv_photo_form.php" class="linkstyle">写真登録</a> /
+			<a href="damagemap.php" class="linkstyle">地図表示</a>
 		</p>
 		<p class="adminpagetitle">申請一覧</p>
 		<div class="appllistwrap">
