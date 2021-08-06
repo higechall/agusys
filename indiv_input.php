@@ -21,8 +21,9 @@ check_session_id();
 			&emsp;&emsp;
 			<a href="admin_login.php" class="linkstyle">管理者ログイン画面</a> /
 			<a href="staff_register.php" class="linkstyle">アカウント登録画面</a> /
-			<!-- <a href="shinsei_graph.php" class="linkstyle">申請一覧画面</a> / -->
+			<a href="damagelist_read.php" class="linkstyle">申請一覧画面</a> /
 			<a href="damagephoto_read.php" class="linkstyle">写真一覧画面</a> /
+			<a href="indiv_photo_form.php" class="linkstyle">写真登録画面</a> /
 			<a href="admin_logout.php" class="linkstyle">ログアウト</a>
 		</p>
 		<p class="adminpagetitle">申請入力</p>

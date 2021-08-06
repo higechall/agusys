@@ -355,3 +355,15 @@ table.appllist th {
 table.appllist tr:nth-child(even) {
 	background-color: #eee;
 }
+
+/* 写真登録 */
+div.imgarea {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+/* 写真表示サイズ */
+img {
+	max-width: 290px;
+	max-height: 290px;
+}
